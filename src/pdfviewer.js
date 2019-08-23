@@ -5,6 +5,7 @@ var PdfViewer = function(opts) {
   this.onerror = opts.onerror || null
   this.staticHost = opts.staticHost || ''
   this.download = opts.download || ''
+  this.pdfName = opts.pdfName
 }
 
 PdfViewer.prototype.embed = function(container) {
@@ -21,6 +22,7 @@ PdfViewer.prototype.embed = function(container) {
   var win = iframe.contentWindow;
 
   win['FILE_URL'] = this.pdfUrl;
+  win['FILE_NAME'] = this.pdfName;
   var self =  this, receiveMessage
 
   if (typeof self.onerror !== 'function') { return }
