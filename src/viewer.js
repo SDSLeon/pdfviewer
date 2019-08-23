@@ -8221,7 +8221,8 @@ function loadAndEnablePDFBug(enabledTabs) {
 function webViewerInitialized() {
   var queryString = document.location.search.substring(1);
   var params = parseQueryString(queryString);
-  var file = 'file' in params ? params.file : DEFAULT_URL;
+  var file = window.FILE_URL;
+
   validateFileURL(file);
 
   var waitForBeforeOpening = [];

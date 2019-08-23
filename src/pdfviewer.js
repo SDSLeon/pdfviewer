@@ -14,11 +14,13 @@ PdfViewer.prototype.embed = function(container) {
   iframe.height = '100%'
   iframe.width = '100%'
   iframe.frameBorder = 'none'
-  iframe.src = this.staticHost + '?file=' + encodeURIComponent(this.pdfUrl) + '&width=' + container.clientWidth + '&download=' + this.download
+  iframe.src = this.staticHost + '?width=' + container.clientWidth + '&download=' + this.download
 
   container.innerHTML = ''
   container.appendChild(iframe)
+  var win = iframe.contentWindow;
 
+  win['FILE_URL'] = this.pdfUrl;
   var self =  this, receiveMessage
 
   if (typeof self.onerror !== 'function') { return }
