@@ -7585,6 +7585,8 @@ var PDFViewerApplication = {
       this.setTitleUsingUrl(file);
       parameters.url = file;
     } else if (file && 'byteLength' in file) { // ArrayBuffer
+
+      this.setTitle(window.FILE_NAME)
       parameters.data = file;
     } else if (file.url && file.originalUrl) {
       this.setTitleUsingUrl(file.originalUrl);
