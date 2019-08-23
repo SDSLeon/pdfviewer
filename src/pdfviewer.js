@@ -1,11 +1,12 @@
 'use strict'
 
 var PdfViewer = function(opts) {
-  this.pdfUrl = opts.pdfUrl || ''
+  this.source = opts.source || ''
   this.onerror = opts.onerror || null
   this.staticHost = opts.staticHost || ''
   this.download = opts.download || ''
-  this.pdfName = opts.pdfName
+  this.language = opts.language || ''
+  this.name = opts.name
 }
 
 PdfViewer.prototype.embed = function(container) {
@@ -21,8 +22,9 @@ PdfViewer.prototype.embed = function(container) {
   container.appendChild(iframe)
   var win = iframe.contentWindow;
 
-  win['FILE_URL'] = this.pdfUrl;
-  win['FILE_NAME'] = this.pdfName;
+  win['FILE_URL'] = this.source;
+  win['FILE_NAME'] = this.name;
+  win['PDF_LANGUAGE'] = this.language;
   var self =  this, receiveMessage
 
   if (typeof self.onerror !== 'function') { return }

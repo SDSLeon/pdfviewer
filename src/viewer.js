@@ -2282,7 +2282,7 @@ PDFJS.ignoreCurrentPositionOnZoom = (PDFJS.ignoreCurrentPositionOnZoom ===
  * Interface locale settings.
  * @var {string}
  */
-PDFJS.locale = (PDFJS.locale === undefined ? navigator.language : PDFJS.locale);
+PDFJS.locale = (PDFJS.locale === undefined ? window.PDF_LANGUAGE ? window.PDF_LANGUAGE : navigator.language : PDFJS.locale);
 
 /**
  * Returns scale factor for the canvas. It makes sense for the HiDPI displays.
