@@ -3081,7 +3081,7 @@ var PDFDocumentProperties = (function PDFDocumentPropertiesClosure() {
       // Get the document properties.
       this.pdfDocument.getMetadata().then(function(data) {
         var content = {
-          'fileName': getPDFFileNameFromURL(this.url),
+          'fileName': window.FILE_NAME || getPDFFileNameFromURL(this.url),
           'fileSize': this._parseFileSize(),
           'title': data.info.Title,
           'author': data.info.Author,
@@ -7662,7 +7662,7 @@ var PDFViewerApplication = {
     }
 
     var url = this.url.split('#')[0];
-    var filename = getPDFFileNameFromURL(url);
+    var filename = window.FILE_NAME || getPDFFileNameFromURL(url);
     var downloadManager = this.downloadManager;
     downloadManager.onerror = function (err) {
       // This error won't really be helpful because it's likely the
